@@ -409,13 +409,17 @@ module.exports = React.createClass({
         return (
             <div className={this.props.className} ref={node => this.carouselWrapper = node}>
                 <div className={klass.CAROUSEL(true)} style={{width: this.props.width || '100%'}}>
-                    <button type="button" className={klass.ARROW_PREV(!hasPrev)} onClick={this.decrement} />
+                    <button type="button" className={klass.ARROW_PREV(!hasPrev)} onClick={this.decrement}>
+                        <i className="pe-7s-angle-left-circle"></i>
+                    </button>
                     <div className={klass.WRAPPER(true, this.props.axis)} style={containerStyles} ref={node => this.itemsWrapper = node}>
                         <Swipe tagName="ul" {...swiperProps}>
                             { this.renderItems() }
                         </Swipe>
                     </div>
-                    <button type="button" className={klass.ARROW_NEXT(!hasNext)} onClick={this.increment} />
+                    <button type="button" className={klass.ARROW_NEXT(!hasNext)} onClick={this.increment}>
+                        <i className="pe-7s-angle-right-circle"></i>
+                    </button>
 
                     { this.renderControls() }
                     { this.renderStatus() }
