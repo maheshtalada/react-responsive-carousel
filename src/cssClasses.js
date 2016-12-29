@@ -33,6 +33,14 @@ module.exports = {
         });
     },
 
+    ITEM_FADE (isSlider, selected) {
+        return classNames({
+            "thumb": !isSlider,
+            "slide-fade": isSlider,
+            "selected": selected
+        });
+    },
+
     ARROW_PREV (disabled) {
         return classNames({
             "control-arrow control-prev": true,

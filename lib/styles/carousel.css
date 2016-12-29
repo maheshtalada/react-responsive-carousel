@@ -16,6 +16,38 @@ button {
   border: 0;
   background: none; }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+@-webkit-keyframes flash {
+  from, 50%, to {
+    opacity: 1; }
+  25%, 75% {
+    opacity: 0; } }
+
+@keyframes flash {
+  from, 50%, to {
+    opacity: 1; }
+  25%, 75% {
+    opacity: 0; } }
+
+.flash {
+  -webkit-animation-name: flash;
+  animation-name: flash; }
+
 .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
   -webkit-transition: all 0.25s ease-in;
   -moz-transition: all 0.25s ease-in;
@@ -25,7 +57,7 @@ button {
   opacity: 0.4;
   filter: alpha(opacity=40);
   position: absolute;
-  z-index: 2;
+  z-index: 10;
   top: 20px;
   background: none;
   border: 0;
@@ -121,7 +153,8 @@ button {
   .carousel .slider-wrapper {
     overflow: hidden;
     margin: auto;
-    width: 100%; }
+    width: 100%;
+    height: 500px; }
     .carousel .slider-wrapper.axis-horizontal .slider {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -129,10 +162,31 @@ button {
       display: -ms-flexbox;
       display: -moz-flex;
       display: -webkit-flex;
-      display: flex; }
+      display: flex;
+      height: inherit; }
       .carousel .slider-wrapper.axis-horizontal .slider .slide {
         flex-direction: column;
         flex-flow: column; }
+      .carousel .slider-wrapper.axis-horizontal .slider .slide-fade {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        overflow: hidden;
+        z-index: 9; }
+      .carousel .slider-wrapper.axis-horizontal .slider .slide-fade.selected {
+        display: list-item;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        animation-name: fadeIn;
+        -webkit-animation-name: fadeIn; }
     .carousel .slider-wrapper.axis-vertical {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -143,7 +197,8 @@ button {
       display: flex; }
       .carousel .slider-wrapper.axis-vertical .slider {
         -webkit-flex-direction: column;
-        flex-direction: column; }
+        flex-direction: column;
+        height: inherit; }
   .carousel .slider {
     position: relative;
     list-style: none;

@@ -28,7 +28,8 @@ module.exports = React.createClass({
         autoPlay: React.PropTypes.bool,
         stopOnHover: React.PropTypes.bool,
         interval: React.PropTypes.number,
-        swipeScrollTolerance: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string])
+        swipeScrollTolerance: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+        type : React.PropTypes.string
     },
 
     getDefaultProps () {
@@ -44,7 +45,8 @@ module.exports = React.createClass({
             autoPlay: false,
             stopOnHover: true,
             interval: 3000,
-            swipeScrollTolerance: 5
+            swipeScrollTolerance: 5,
+            type: 'slider'
         }
     },
 
@@ -302,7 +304,8 @@ module.exports = React.createClass({
     renderItems () {
         return React.Children.map(this.props.children, (item, index) => {
             var hasMount = this.state.hasMount;
-            var itemClass = klass.ITEM(true, index === this.state.selectedItem);
+            var type = this.props.type;
+            var itemClass = type === 'fade' ? klass.ITEM_FADE(true, index === this.state.selectedItem) : klass.ITEM(true, index === this.state.selectedItem);
 
             return (
                 <li ref={node => this["item" + index] = node} key={"itemKey" + index} className={itemClass}
@@ -349,7 +352,7 @@ module.exports = React.createClass({
 
     render () {
         var itemsLength = this.props.children.length;
-
+        var type = this.props.type;
         if (itemsLength === 0) {
             return null;
         }
@@ -413,9 +416,17 @@ module.exports = React.createClass({
                         <i className="pe-7s-angle-left-circle"></i>
                     </button>
                     <div className={klass.WRAPPER(true, this.props.axis)} style={containerStyles} ref={node => this.itemsWrapper = node}>
-                        <Swipe tagName="ul" {...swiperProps}>
-                            { this.renderItems() }
-                        </Swipe>
+                        {
+                            type === 'fade'
+                            ?
+                                <ul className="slider">
+                                    { this.renderItems() }
+                                </ul>
+                            :   <Swipe tagName="ul" {...swiperProps}>
+                                    { this.renderItems() }
+                                </Swipe>
+                        }
+
                     </div>
                     <button type="button" className={klass.ARROW_NEXT(!hasNext)} onClick={this.increment}>
                         <i className="pe-7s-angle-right-circle"></i>

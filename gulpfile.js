@@ -67,14 +67,14 @@ gulp.task('copy:production', function() {
   });
 })
 
-gulp.task('prepublish', ['test', 'scripts:production', 'styles:production', 'copy:production'])
+gulp.task('prepublish', ['scripts:production', 'styles:production', 'copy:production'])
 
 gulp.task('publish', function(done) {
   return ghPagesTask(done);
 })
 
 // Development workflow
-gulp.task('default', ['scripts', 'test', 'styles', 'copy', 'webserver'], function() {
+gulp.task('default', ['scripts', 'styles', 'copy', 'webserver'], function() {
   gulp.watch(configs.paths.source + "/**/*.js", ['scripts', 'test'])
     .on('change', function(event) {
       console.log('Scripts watcher trigger: ' + event.path + ' was ' + event.type + ', running tasks...');
