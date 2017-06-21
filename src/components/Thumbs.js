@@ -13,13 +13,15 @@ module.exports = React.createClass({
 
     propsTypes: {
         children: React.PropTypes.element.isRequired,
-        selectedItem: React.PropTypes.number
+        selectedItem: React.PropTypes.number,
+        isSlide : React.PropTypes.bool,
     },
 
     getDefaultProps () {
         return {
             selectedItem: 0,
-            axis: 'horizontal'
+            axis: 'horizontal',
+            isSlide : true
         }
     },
 
@@ -176,6 +178,7 @@ module.exports = React.createClass({
 
     renderItems () {
         return React.Children.map(this.props.children, (item, index) => {
+
             var itemClass = klass.ITEM(false, index === this.state.selectedItem && this.state.hasMount);
 
             var img = item;
@@ -209,7 +212,7 @@ module.exports = React.createClass({
         // obj to hold the transformations and styles
         var itemListStyles = {};
 
-        var currentPosition = - this.state.firstItem * this.itemSize + 'px';
+        var currentPosition = this.props.isSlide ? - this.state.firstItem * this.itemSize + 'px' : '0px';
 
         var transformProp = CSSTranslate(currentPosition, this.props.axis);
 

@@ -29,7 +29,8 @@ module.exports = React.createClass({
         stopOnHover: React.PropTypes.bool,
         interval: React.PropTypes.number,
         swipeScrollTolerance: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
-        type : React.PropTypes.string
+        type : React.PropTypes.string,
+        slideThumbs : React.PropTypes.bool
     },
 
     getDefaultProps () {
@@ -46,7 +47,8 @@ module.exports = React.createClass({
             stopOnHover: true,
             interval: 3000,
             swipeScrollTolerance: 5,
-            type: 'slider'
+            type: 'slider',
+            slideThumbs: true
         }
     },
 
@@ -306,7 +308,6 @@ module.exports = React.createClass({
             var hasMount = this.state.hasMount;
             var type = this.props.type;
             var itemClass = type === 'fade' ? klass.ITEM_FADE(true, index === this.state.selectedItem) : klass.ITEM(true, index === this.state.selectedItem);
-
             return (
                 <li ref={node => this["item" + index] = node} key={"itemKey" + index} className={itemClass}
                     onClick={ this.handleClickItem.bind(this, index, item) }>
@@ -344,7 +345,7 @@ module.exports = React.createClass({
         }
 
         return (
-            <Thumbs onSelectItem={this.handleClickThumb} selectedItem={this.state.selectedItem}>
+            <Thumbs onSelectItem={this.handleClickThumb} selectedItem={this.state.selectedItem} isSlide={this.props.slideThumbs}>
                 {this.props.children}
             </Thumbs>
         );

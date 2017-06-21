@@ -14,11 +14,13 @@ function onClickThumb() {
     console.log('onClickThumb', arguments);
 }
 
+
+
 // Begin DemoSliderControls
 var DemoCarousel = React.createClass({
     render() {
         return (
-            <Carousel showArrows={true} infiniteLoop={true} onChange={onChange} onClickItem={onClickItem} onClickThumb={onClickThumb}>
+            <Carousel showIndicators={false} showArrows={true} slideThumbs={false} infiniteLoop={true} onChange={onChange} onClickItem={onClickItem} onClickThumb={onClickThumb}>
                 <div>
                     <img src="assets/1.jpeg" />
                     <p className="legend">Legend 1</p>
@@ -43,12 +45,109 @@ var DemoCarousel = React.createClass({
                     <img src="assets/6.jpeg" />
                     <p className="legend">Legend 6</p>
                 </div>
+        <div>
+        <img src="assets/1.jpeg" />
+            <p className="legend">Legend 1</p>
+        </div>
+        <div>
+        <img src="assets/2.jpeg" />
+            <p className="legend">Legend 2</p>
+        </div>
+        <div>
+        <img src="assets/3.jpeg" />
+            <p className="legend">Legend 3</p>
+        </div>
+        <div>
+        <img src="assets/4.jpeg" />
+            <p className="legend">Legend 4</p>
+        </div>
+        <div>
+        <img src="assets/5.jpeg" />
+            <p className="legend">Legend 5</p>
+        </div>
+        <div>
+        <img src="assets/6.jpeg" />
+            <p className="legend">Legend 6</p>
+        </div>
+        <div>
+        <img src="assets/1.jpeg" />
+            <p className="legend">Legend 1</p>
+        </div>
+        <div>
+        <img src="assets/2.jpeg" />
+            <p className="legend">Legend 2</p>
+        </div>
+        <div>
+        <img src="assets/3.jpeg" />
+            <p className="legend">Legend 3</p>
+        </div>
+        <div>
+        <img src="assets/4.jpeg" />
+            <p className="legend">Legend 4</p>
+        </div>
+        <div>
+        <img src="assets/5.jpeg" />
+            <p className="legend">Legend 5</p>
+        </div>
+        <div>
+        <img src="assets/6.jpeg" />
+            <p className="legend">Legend 6</p>
+        </div>
+        <div>
+        <img src="assets/1.jpeg" />
+            <p className="legend">Legend 1</p>
+        </div>
+        <div>
+        <img src="assets/2.jpeg" />
+            <p className="legend">Legend 2</p>
+        </div>
+        <div>
+        <img src="assets/3.jpeg" />
+            <p className="legend">Legend 3</p>
+        </div>
+        <div>
+        <img src="assets/4.jpeg" />
+            <p className="legend">Legend 4</p>
+        </div>
+        <div>
+        <img src="assets/5.jpeg" />
+            <p className="legend">Legend 5</p>
+        </div>
+        <div>
+        <img src="assets/6.jpeg" />
+            <p className="legend">Legend 6</p>
+        </div>
+        <div>
+        <img src="assets/1.jpeg" />
+            <p className="legend">Legend 1</p>
+        </div>
+        <div>
+        <img src="assets/2.jpeg" />
+            <p className="legend">Legend 2</p>
+        </div>
+        <div>
+        <img src="assets/3.jpeg" />
+            <p className="legend">Legend 3</p>
+        </div>
+        <div>
+        <img src="assets/4.jpeg" />
+            <p className="legend">Legend 4</p>
+        </div>
+        <div>
+        <img src="assets/5.jpeg" />
+            <p className="legend">Legend 5</p>
+        </div>
+        <div>
+        <img src="assets/6.jpeg" />
+            <p className="legend">Legend 6</p>
+        </div>
             </Carousel>
         );
     }
 });
 ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));
 
+/*
 var DemoCarouselVideos = React.createClass({
     render() {
         return (
@@ -145,3 +244,4 @@ var DemoCleanCarousel = React.createClass({
     }
 });
 ReactDOM.render(<DemoCleanCarousel />, document.querySelector('.demo-clean-carousel'));
+*/
